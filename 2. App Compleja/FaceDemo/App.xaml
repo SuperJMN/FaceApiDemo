@@ -1,0 +1,44 @@
+﻿<Application
+    x:Class="FaceDemo.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FaceDemo"
+    RequestedTheme="Light">
+
+    <Application.Resources>
+        
+        <ResourceDictionary>
+
+            <Style x:Key="ButtonStyle" TargetType="Button">
+                <Setter Property="Margin" Value="50" />
+                <Setter Property="VerticalAlignment" Value="Bottom" />
+                <Setter Property="HorizontalAlignment" Value="Right" />
+                <Setter Property="Width" Value="80" />
+                <Setter Property="Padding" Value="10" />
+            </Style>
+
+            <local:PageSelector x:Key="TemplateSelector" />
+
+            <DataTemplate x:Key="DetectTemplate">
+                <local:DetectControl />
+            </DataTemplate>
+
+            <DataTemplate x:Key="GroupTemplate">
+                <local:GroupControl />
+            </DataTemplate>
+
+            <DataTemplate x:Key="IdentifyTemplate">
+                <local:IdentifyControl />
+            </DataTemplate>
+
+            <DataTemplate x:Key="RegisterTemplate">
+                <local:RegisterControl />
+            </DataTemplate>
+
+        </ResourceDictionary>
+
+    </Application.Resources>
+</Application>
+
+
+

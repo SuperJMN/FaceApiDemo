@@ -1,0 +1,54 @@
+﻿<UserControl
+    x:Class="FaceDemo.RegisterControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FaceDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:c="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    mc:Ignorable="d"
+    d:DesignHeight="600"
+    d:DesignWidth="600" d:DataContext="{d:DesignInstance local:RegisterViewModel}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <ListView ItemsSource="{Binding People}" Header="Personas en el grupo por defecto">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <StackPanel>
+
+                <TextBox Header="Nombre" Text="{Binding Name, Mode=TwoWay}" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Cargar imágenes" Command="{Binding SelectImagesCommand}" />
+                    <Button Grid.Column="1" Content="Registrar " Command="{Binding RegisterPersonCommand}" />
+                </Grid>
+            </StackPanel>
+            <c:AdaptiveGridView Grid.Column="1" ItemsSource="{Binding Images}" OneRowModeEnabled="True" ItemHeight="300" DesiredWidth="400">
+                <c:AdaptiveGridView.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding Image}" />
+                    </DataTemplate>
+                </c:AdaptiveGridView.ItemTemplate>
+            </c:AdaptiveGridView>
+
+        </Grid>
+
+        <!--<Button Content="Load" Command="{Binding LoadPeopleCommand}" />-->
+    </Grid>
+</UserControl>
