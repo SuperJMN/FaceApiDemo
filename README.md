@@ -16,6 +16,11 @@ https://azure.microsoft.com/en-us/try/cognitive-services/?api=face-api
 
 ![image](https://user-images.githubusercontent.com/3109851/32167429-1bd05f04-bd69-11e7-86d2-678a00fdcacf.png)
 
+Una vez tengáis la API Key, tendréis que abrir el proyecto en cuestión y pegarla en el lugar indicado:
+
+Para la Sencilla, debéis pegarla aquí: https://github.com/SuperJMN/FaceApiDemo/blob/master/1.%20App%20Sencilla/App1/Keys.cs
+Para la Compleja, pegadla aquí: https://github.com/SuperJMN/FaceApiDemo/blob/master/2.%20App%20Compleja/FaceDemo/Constants.cs
+
 Si tenéis dudas o problemas, por favor, haced uso de la sección "Issues".
 
 ¡Gracias!
