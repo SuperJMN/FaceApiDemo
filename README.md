@@ -2,7 +2,7 @@
 Aquí podréis encontrar las 2 demos expuestas en el Webinar de Face API Microsoft-Bravent.
 
 - La primera consta de muy poco código, con lo básico para poder hacer pruebas.
-- La segunda es más compleja en cuanto a funcionamiento y tiene una GUI completa, donde se muestran funciones completas de Face API, haciendo uso de ReactiveUI+MVVM (Programación Reactiva).
+- La segunda es más compleja en cuanto a funcionamiento y tiene una GUI completa, donde se muestran funciones completas de Face API, haciendo uso de ReactiveUI (Programación Reactiva + MVVM).
 
 Para probar las aplicaciones es necesario tener la última versión de Visual Studio 2017 (15.4)
 
