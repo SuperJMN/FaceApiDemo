@@ -11,3 +11,11 @@ Para hacerlas funcionar necesitaréis una API Key. Se consiguen registrándose a
 
 https://azure.microsoft.com/en-us/try/cognitive-services/?api=face-api
 
+![image](https://user-images.githubusercontent.com/3109851/32167429-1bd05f04-bd69-11e7-86d2-678a00fdcacf.png)
+
+Si tenéis dudas o problemas, por favor, haced uso de la sección "Issues".
+
+¡Gracias!
+
+Un saludo :)
+José Manuel
