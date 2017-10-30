@@ -1,2 +1,0 @@
-La app Compleja requiere la versión más reciente de Windows 10 (Fall Creators Update) y el último SDK.
-La app Sencilla tiene como target la versión más reciente, pero puede cambiarse a versiones anteriores de Windows 10, como Creators Update o November Update. 
