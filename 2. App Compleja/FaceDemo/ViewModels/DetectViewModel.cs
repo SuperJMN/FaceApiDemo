@@ -6,6 +6,7 @@ using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.UI.Popups;
+using FaceDemo.FaceApi;
 using Microsoft.ProjectOxford.Face;
 using ReactiveUI;
 

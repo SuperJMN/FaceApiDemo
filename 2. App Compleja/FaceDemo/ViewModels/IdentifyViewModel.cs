@@ -5,6 +5,7 @@ using System.Reactive;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Windows.Storage;
+using FaceDemo.FaceApi;
 using Microsoft.ProjectOxford.Face;
 using Microsoft.ProjectOxford.Face.Contract;
 using ReactiveUI;
@@ -15,8 +16,8 @@ namespace FaceDemo
     {
         private readonly IFaceServiceClient client;
         private readonly Detector detector;
-        private readonly ObservableAsPropertyHelper<IEnumerable<IdentificationViewModel>> imagesHelper;
-        private ObservableAsPropertyHelper<bool> loadingHelper;
+        private readonly ObservableAsPropertyHelper<IEnumerable<IdentificationViewModel>> imagesObs;
+        private readonly ObservableAsPropertyHelper<bool> isBusyObs;
 
         public IdentifyViewModel(IFaceServiceClient client, IDialogService dialogService)
         {
@@ -27,23 +28,23 @@ namespace FaceDemo
             
             SelectFilesCommand = fileSelector.SelectFilesCommand;
 
-            var selectFilesObs = SelectFilesCommand.Publish();
+            var filesObs = SelectFilesCommand.Publish();
 
             IdentifyCommand = ReactiveCommand.CreateFromTask(IdentifyFaces, imageSelector.Images.Any());
 
-            imagesHelper = imageSelector.Images
+            imagesObs = imageSelector.Images
                 .Select(list => list.Select(data => new IdentificationViewModel(data.Image, data.Source)).ToList())
                 .ToProperty(this, model => model.Identifications);
 
-            IdentifyCommand.Subscribe(detections => SetIdentifications(detections));
+            IdentifyCommand.Subscribe(SetIdentifications);
             IdentifyCommand.ThrownExceptions.Subscribe(async exception => await dialogService.ShowException(exception));
 
-            loadingHelper = IdentifyCommand.IsExecuting.ToProperty(this, model => model.IsLoading);
+            isBusyObs = IdentifyCommand.IsExecuting.ToProperty(this, model => model.IsBusy);
 
-            selectFilesObs.Connect();
+            filesObs.Connect();
         }
 
-        public bool IsLoading => loadingHelper.Value;
+        public bool IsBusy => isBusyObs.Value;
 
         private void SetIdentifications(IEnumerable<IdentifyFromFile> identifications)
         {
@@ -54,7 +55,7 @@ namespace FaceDemo
             }
         }
         
-        public IEnumerable<IdentificationViewModel> Identifications => imagesHelper.Value;
+        public IEnumerable<IdentificationViewModel> Identifications => imagesObs.Value;
 
         private async Task<IList<IdentifyFromFile>> IdentifyFaces()
         {
@@ -62,7 +63,7 @@ namespace FaceDemo
 
             var identifications = detection
                 .ToObservable()
-                .SelectMany(df => GetIdentifications(df))
+                .SelectMany(GetIdentifications)
                 .ToList();
 
             return await identifications;
@@ -72,7 +73,7 @@ namespace FaceDemo
         {
             var identifications = detect.Faces
                 .ToObservable()
-                .SelectMany(face => GetIdentification(face));
+                .SelectMany(GetIdentification);
 
             return new IdentifyFromFile
             {

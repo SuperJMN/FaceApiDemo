@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Windows.Storage;
 using Microsoft.ProjectOxford.Face;
 
-namespace FaceDemo
+namespace FaceDemo.FaceApi
 {
     public class Detector
     {
@@ -27,9 +27,9 @@ namespace FaceDemo
 
         private async Task<DetectFromFile> GetFaceIds(StorageFile file)
         {
-            using (var p = await file.OpenStreamForReadAsync())
+            using (var imageStream = await file.OpenStreamForReadAsync())
             {
-                var faceIds = await client.DetectAsync(p);
+                var faceIds = await client.DetectAsync(imageStream);
                 return new DetectFromFile(file, faceIds);
             }
         }

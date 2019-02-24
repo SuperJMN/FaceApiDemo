@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Windows.Storage;
+using FaceDemo.FaceApi;
 using Microsoft.ProjectOxford.Face.Contract;
 
 namespace FaceDemo

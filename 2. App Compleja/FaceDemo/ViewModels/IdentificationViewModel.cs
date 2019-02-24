@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Windows.Storage;
 using Windows.UI.Xaml.Media.Imaging;
+using FaceDemo.FaceApi;
 using ReactiveUI;
 
 namespace FaceDemo

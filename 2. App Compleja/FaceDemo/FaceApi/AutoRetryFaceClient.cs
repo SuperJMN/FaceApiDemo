@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Microsoft.ProjectOxford.Face;
 using Microsoft.ProjectOxford.Face.Contract;
 
-namespace FaceDemo
+namespace FaceDemo.FaceApi
 {
     public class AutoRetryFaceClient : IFaceServiceClient
     {
@@ -90,12 +90,12 @@ namespace FaceDemo
             return innerClient.DeletePersonGroupAsync(personGroupId);
         }
 
-        public Task<Face[]> DetectAsync(string imageUrl, bool returnFaceId, bool returnFaceLandmarks, IEnumerable<FaceAttributeType> returnFaceAttributes = null)
+        public Task<Microsoft.ProjectOxford.Face.Contract.Face[]> DetectAsync(string imageUrl, bool returnFaceId, bool returnFaceLandmarks, IEnumerable<FaceAttributeType> returnFaceAttributes = null)
         {
             return RateLimitAwareCall(() => innerClient.DetectAsync(imageUrl, returnFaceId, returnFaceLandmarks, returnFaceAttributes));
         }
 
-        public Task<Face[]> DetectAsync(Stream imageStream,
+        public Task<Microsoft.ProjectOxford.Face.Contract.Face[]> DetectAsync(Stream imageStream,
             bool returnFaceId,
             bool returnFaceLandmarks,
             IEnumerable<FaceAttributeType> returnFaceAttributes = null)
@@ -239,8 +239,7 @@ namespace FaceDemo
 
         private static bool IsRateLimitExceeded(Exception arg)
         {
-            var faceApiException = arg as FaceAPIException;
-            if ((faceApiException != null) && (faceApiException.ErrorCode == "RateLimitExceeded"))
+            if (arg is FaceAPIException faceApiException && faceApiException.ErrorCode == "RateLimitExceeded")
                 return true;
 
             return false;

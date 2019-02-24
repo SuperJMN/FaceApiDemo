@@ -3,6 +3,8 @@ using System.Runtime.CompilerServices;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Castle.DynamicProxy;
+using FaceDemo.FaceApi;
+using FaceDemo.ViewModels;
 using Microsoft.ProjectOxford.Face;
 using Serilog;
 
@@ -23,7 +25,7 @@ namespace FaceDemo
 
         private IFaceServiceClient CreateClient()
         {
-            return new AutoRetryFaceClient(new FaceServiceClient(Constants.SubscriptionKey));
+            return new AutoRetryFaceClient(new FaceServiceClient(Constants.SubscriptionKey, "https://westeurope.api.cognitive.microsoft.com/face/v1.0"));
         }
 
     }

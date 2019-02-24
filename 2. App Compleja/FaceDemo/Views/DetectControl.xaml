@@ -43,11 +43,7 @@
                 </DataTemplate>
             </c:AdaptiveGridView.ItemTemplate>
         </c:AdaptiveGridView>
-        <Button Command="{Binding DetectCommand}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Style="{StaticResource ButtonStyle}">
-            <Button.Content>
-                <Image Source="detect.png" />
-            </Button.Content>
-        </Button>
+        <Button Command="{Binding DetectCommand}" Content="Detect"  Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Style="{StaticResource ButtonStyle}" />
     </Grid>
 </UserControl>
 

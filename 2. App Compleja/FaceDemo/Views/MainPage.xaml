@@ -7,9 +7,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
-    xmlns:contract="using:Microsoft.ProjectOxford.Face.Contract"
     xmlns:behaviors="using:Microsoft.Toolkit.Uwp.UI.Animations.Behaviors"
-    mc:Ignorable="d" d:DataContext="{d:DesignInstance local:MainViewModel}">
+    xmlns:viewModels="using:FaceDemo.ViewModels"
+    mc:Ignorable="d" d:DataContext="{d:DesignInstance viewModels:MainViewModel}">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <controls:MasterDetailsView ItemsSource="{Binding Sections}">
@@ -40,7 +40,7 @@
                                     </interactivity:Interaction.Behaviors>
                                 </Border>
                                 
-                                <ProgressRing Height="200" Width="200" IsActive="{Binding ViewModel.IsLoading}" />
+                                <ProgressRing Height="200" Width="200" IsActive="{Binding ViewModel.IsBusy}" />
                                 
                             </Grid>
                         </controls:Loading>

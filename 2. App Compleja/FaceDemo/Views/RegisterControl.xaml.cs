@@ -1,12 +1,12 @@
 ﻿using System;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
+using FaceDemo.ViewModels;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace FaceDemo
+namespace FaceDemo.Views
 {
-    public sealed partial class RegisterControl : UserControl
+    public sealed partial class RegisterControl
     {
         public RegisterControl()
         {

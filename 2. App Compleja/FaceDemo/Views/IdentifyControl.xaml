@@ -13,16 +13,17 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <c:Menu Grid.ColumnSpan="2">
             <c:MenuItem Header="Archivo">
                 <MenuFlyoutItem Text="Seleccionar archivos" Command="{Binding SelectFilesCommand}" />
             </c:MenuItem>
         </c:Menu>
-        <c:AdaptiveGridView Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Identifications}" DesiredWidth="700">
+        <c:AdaptiveGridView Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Identifications}" DesiredWidth="600">
             <c:AdaptiveGridView.ItemTemplate>
                 <DataTemplate>
-                    <Viewbox>
+                    <Viewbox x:Name="Viewbox">
                         <Grid>
                             <Image Source="{Binding Image}" Stretch="None" />
                             <designer:DesignerSurface ItemsSource="{Binding Identifications}" 
@@ -32,7 +33,7 @@
                                                       HeightBinding="{Binding Face.FaceRectangle.Height}">
                                 <designer:DesignerSurface.ItemTemplate>
                                     <DataTemplate>
-                                        <Border Background="#8100FFFF" Padding="6">
+                                        <Border Background="#8100FFFF" Padding="6">                                            
                                             <Border Background="#D3FFFFFF" CornerRadius="2" Padding="2" VerticalAlignment="Center" HorizontalAlignment="Center">
                                                 <TextBlock FontSize="20" TextAlignment="Center" Text="{Binding Person.Name}" />
                                             </Border>
@@ -46,9 +47,7 @@
                 </DataTemplate>
             </c:AdaptiveGridView.ItemTemplate>
         </c:AdaptiveGridView>
-        <Button Command="{Binding IdentifyCommand}" Grid.Row="0" Grid.Column="0" Margin="20" Grid.RowSpan="2"
-                Style="{StaticResource ButtonStyle}" ToolTipService.ToolTip="Identificar">
-            <Image Source="magnifier.png" />
+        <Button Command="{Binding IdentifyCommand}" Grid.Row="2" Grid.Column="0" Margin="20" Grid.RowSpan="2" Content="Identify" Style="{StaticResource ButtonStyle}" ToolTipService.ToolTip="Identify">
         </Button>
     </Grid>
 </UserControl>

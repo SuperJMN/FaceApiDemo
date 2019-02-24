@@ -2,36 +2,33 @@
 using Microsoft.ProjectOxford.Face;
 using ReactiveUI;
 
-namespace FaceDemo
+namespace FaceDemo.ViewModels
 {
     public class MainViewModel : ReactiveObject
     {
-        private readonly IFaceServiceClient client;
-
         public MainViewModel(IFaceServiceClient client, IDialogService dialogService)
         {
-            this.client = client;
             Sections = new List<SectionViewModel>
             {
                 new SectionViewModel
                 {
-                    Name = "Detección",
+                    Name = "Detect",
                     ViewModel = new DetectViewModel(client, dialogService)
                 },
                 new SectionViewModel
                 {
-                    Name = "Identificación",
+                    Name = "Identify",
                     ViewModel = new IdentifyViewModel(client, dialogService)
                 },
                 new SectionViewModel
                 {
-                    Name = "Agrupar",
+                    Name = "Group",
                     ViewModel = new GroupViewModel(client, dialogService)
                 },
                 new SectionViewModel
                 {
-                    Name = "Registrar",
-                    ViewModel = new RegisterViewModel(client, dialogService)
+                    Name = "Registered People",
+                    ViewModel = new RegisterViewModel(client, dialogService, DefaultValues.DefaultGroupName)
                 }
             };
         }
