@@ -8,36 +8,31 @@ using Windows.UI.Xaml.Navigation;
 using Microsoft.ProjectOxford.Face;
 using Microsoft.ProjectOxford.Face.Contract;
 
-// La plantilla de elemento Página en blanco está documentada en https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0xc0a
-
 namespace App1
 {
-    /// <summary>
-    /// Página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
-    /// </summary>
     public sealed partial class MainPage : Page
     {
-        private FaceServiceClient faceApiClient;
+        private readonly FaceServiceClient faceApiClient;
 
         public MainPage()
         {
             this.InitializeComponent();
 
-            faceApiClient = new FaceServiceClient(Keys.ApiKey);         
+            faceApiClient = new FaceServiceClient(Keys.ApiKey, "https://westeurope.api.cognitive.microsoft.com/face/v1.0");         
         }
 
         /// <summary>
-        /// Pon un punto de interrupción aquí y mira lo que ocurre al arrancar la aplicación :) No te olvides de poner tu API KEY!
+        /// Set a breakpoint in this method and pay close attention to what this does :) Don't forget to set your API key!!
         /// </summary>
         /// <param name="e"></param>
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
-            var file = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///blanca.jpg", UriKind.RelativeOrAbsolute));
+            var file = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///emma.jpg", UriKind.RelativeOrAbsolute));
             using (var stream = await file.OpenStreamForReadAsync())
             {
-                var personGroupId = "group1";
+                var personGroupId = "default";
 
                 Face[] faces = await faceApiClient.DetectAsync(stream);
                 IdentifyResult[] identifyResults = await faceApiClient.IdentifyAsync(personGroupId, new[] {faces.First().FaceId});
@@ -47,12 +42,12 @@ namespace App1
 
 
         /// <summary>
-        /// Si queremos registrar una persona, podemos usar este método como base
+        /// If we want to register a person, we can use this method as a base
         /// </summary>
         /// <returns></returns>
         public async Task CreatePersonAsync()
         {
-            var personGroupId = "group1";
+            var personGroupId = "default";
             var newPerson = await faceApiClient.CreatePersonAsync(personGroupId, "Mario López");
             var registeredFace = await faceApiClient.AddPersonFaceAsync(personGroupId, newPerson.PersonId, "http://url.de.cara.a.regitrar");
         }
