@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
@@ -21,17 +22,25 @@ namespace FaceDemo.FaceApi
         {
             var ids = files
                 .ToObservable()
-                .SelectMany(GetFaceIds);
+                .SelectMany(GetFaceIds)
+                .Where(x => x != null);
 
             return await ids.ToList();
         }
 
         private async Task<DetectFromFile> GetFaceIds(StorageFile file)
         {
-            using (var imageStream = await file.OpenStreamForReadAsync())
+            try
             {
-                var faceIds = await client.DetectAsync(imageStream);
-                return new DetectFromFile(file, faceIds);
+                using (var imageStream = await file.OpenStreamForReadAsync())
+                {
+                    var faceIds = await client.DetectAsync(imageStream);
+                    return new DetectFromFile(file, faceIds);
+                }
+            }
+            catch (Exception e)
+            {
+                return null;
             }
         }
     }
