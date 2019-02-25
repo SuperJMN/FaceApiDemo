@@ -36,12 +36,12 @@ namespace FaceDemo
             imagesHelper = imageSelector.Images.ToProperty(this, model => model.Images);
             groupsHelper = GroupCommand.ToProperty(this, model => model.Groups);
 
-            loadingHelper = GroupCommand.IsExecuting.ToProperty(this, model => model.IsLoading);
+            loadingHelper = GroupCommand.IsExecuting.ToProperty(this, model => model.IsBusy);
 
             selectFilesObs.Connect();
         }
 
-        public bool IsLoading => loadingHelper.Value;
+        public bool IsBusy => loadingHelper.Value;
 
         public IEnumerable<Group> Groups => groupsHelper.Value;
 

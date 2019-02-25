@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reactive;
@@ -17,7 +18,7 @@ namespace FaceDemo.ViewModels
         private readonly string group;
         private readonly ObservableAsPropertyHelper<IList<PersonViewModel>> peopleHelper;
         private readonly ObservableAsPropertyHelper<IList<ImageData>> imagesHelper;
-        private readonly ObservableAsPropertyHelper<bool> loadingHelper;
+        private readonly ObservableAsPropertyHelper<bool> busyObs;
         private string name;
 
         public RegisterViewModel(IFaceServiceClient client, IDialogService dialogService, string group)
@@ -40,15 +41,20 @@ namespace FaceDemo.ViewModels
 
             peopleHelper = LoadPeopleCommand.Select(people => people.Select(person => new PersonViewModel(person, client, group, dialogService)).ToList()).ToProperty(this, r => r.People);
             
+            busyObs = Observable
+                .Merge(new [] { RegisterPersonCommand.IsExecuting, LoadPeopleCommand.IsExecuting})
+                .ToProperty(this, model => model.IsBusy);
 
-            loadingHelper = RegisterPersonCommand.IsExecuting.ToProperty(this, model => model.IsLoading);
+            MessageBus.Current.Listen<PersonDeletedMessage>()
+                .Select(x => Unit.Default)
+                .InvokeCommand(this, model => model.LoadPeopleCommand);
 
             RegisterPersonCommand
                 .Select(x => Unit.Default)
                 .InvokeCommand(LoadPeopleCommand);
         }
 
-        public bool IsLoading => loadingHelper.Value;
+        public bool IsBusy => busyObs.Value;
 
         public ReactiveCommand<Unit, Unit> RegisterPersonCommand { get; }
 

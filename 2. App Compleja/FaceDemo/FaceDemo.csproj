@@ -101,6 +101,7 @@
     <Compile Include="FaceApi\Identification.cs" />
     <Compile Include="ViewModels\DefaultValues.cs" />
     <Compile Include="ViewModels\IdentificationViewModel.cs" />
+    <Compile Include="ViewModels\PersonDeletedMessage.cs" />
     <Compile Include="ViewModels\PersonViewModel.cs" />
     <Compile Include="ViewModels\RxCommandExtensions.cs" />
     <Compile Include="Views\IdentifyControl.xaml.cs">

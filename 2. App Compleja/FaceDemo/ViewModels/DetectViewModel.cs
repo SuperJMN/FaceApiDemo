@@ -38,12 +38,12 @@ namespace FaceDemo
             DetectCommand.Subscribe(detections => SetDetections(detections));
             DetectCommand.ThrownExceptions.Subscribe(async exception => await dialogService.ShowException(exception));
 
-            loadingHelper = DetectCommand.IsExecuting.ToProperty(this, model => model.IsLoading);
+            loadingHelper = DetectCommand.IsExecuting.ToProperty(this, model => model.IsBusy);
 
             selectFilesObs.Connect();
         }
 
-        public bool IsLoading => loadingHelper.Value;
+        public bool IsBusy => loadingHelper.Value;
 
         private void SetDetections(IEnumerable<DetectFromFile> detections)
         {

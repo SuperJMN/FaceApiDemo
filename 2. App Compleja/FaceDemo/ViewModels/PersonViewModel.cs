@@ -17,9 +17,10 @@ namespace FaceDemo.ViewModels
             {
                 await client.DeletePersonAsync(@group, person.PersonId);
                 await client.TrainPersonGroupAsync(DefaultValues.DefaultGroupName);
+                MessageBus.Current.SendMessage(new PersonDeletedMessage(person));
             });
 
-            DeleteCommand.HandleErrors(dialogService);
+            DeleteCommand.HandleErrors(dialogService);            
         }
     }
 }
