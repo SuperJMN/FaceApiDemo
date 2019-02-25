@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="FaceDemo.DetectControl"
+    x:Class="FaceDemo.Views.DetectControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:FaceDemo"
@@ -16,8 +16,8 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <c:Menu Grid.ColumnSpan="2">
-            <c:MenuItem Header="Archivo">
-                <MenuFlyoutItem Text="Seleccionar archivos" Command="{Binding SelectFilesCommand}" />
+            <c:MenuItem Header="File">
+                <MenuFlyoutItem Text="Pick images" Command="{Binding SelectFilesCommand}" />
             </c:MenuItem>
         </c:Menu>
         <c:AdaptiveGridView Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Images}" DesiredWidth="400" ItemHeight="400">

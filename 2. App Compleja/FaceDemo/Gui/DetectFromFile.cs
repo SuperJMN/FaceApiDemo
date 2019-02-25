@@ -1,7 +1,7 @@
 ﻿using Windows.Storage;
 using Microsoft.ProjectOxford.Face.Contract;
 
-namespace FaceDemo.FaceApi
+namespace FaceDemo.Gui
 {
     public class DetectFromFile
     {

@@ -1,7 +1,7 @@
 ﻿using Windows.Storage;
 using Windows.UI.Xaml.Media.Imaging;
 
-namespace FaceDemo
+namespace FaceDemo.Misc
 {
     public class ImageData
     {

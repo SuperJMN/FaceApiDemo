@@ -5,6 +5,7 @@ using System.Net.Http.Headers;
 using System.Reactive;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
+using FaceDemo.Misc;
 using Microsoft.ProjectOxford.Face;
 using Microsoft.ProjectOxford.Face.Contract;
 

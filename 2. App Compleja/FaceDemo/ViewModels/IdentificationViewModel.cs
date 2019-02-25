@@ -4,7 +4,7 @@ using Windows.UI.Xaml.Media.Imaging;
 using FaceDemo.FaceApi;
 using ReactiveUI;
 
-namespace FaceDemo
+namespace FaceDemo.ViewModels
 {
     public class IdentificationViewModel : ReactiveObject
     {

@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using Windows.Storage;
 using FaceDemo.FaceApi;
+using FaceDemo.Gui;
 using Microsoft.ProjectOxford.Face.Contract;
 
-namespace FaceDemo
+namespace FaceDemo.Misc
 {
     public class IdentifyFromFile
     {

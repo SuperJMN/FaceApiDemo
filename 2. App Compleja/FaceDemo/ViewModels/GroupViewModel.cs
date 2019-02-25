@@ -6,10 +6,11 @@ using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Windows.Storage;
 using FaceDemo.FaceApi;
+using FaceDemo.Misc;
 using Microsoft.ProjectOxford.Face;
 using ReactiveUI;
 
-namespace FaceDemo
+namespace FaceDemo.ViewModels
 {
     public class GroupViewModel : ReactiveObject
     {

@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:FaceDemo"
     xmlns:views="using:FaceDemo.Views"
+    xmlns:misc="using:FaceDemo.Misc"
     RequestedTheme="Light">
 
     <Application.Resources>
@@ -18,18 +19,18 @@
                 <Setter Property="Padding" Value="10" />
             </Style>
 
-            <local:PageSelector x:Key="TemplateSelector" />
+            <misc:PageSelector x:Key="TemplateSelector" />
 
             <DataTemplate x:Key="DetectTemplate">
-                <local:DetectControl />
+                <views:DetectControl />
             </DataTemplate>
 
             <DataTemplate x:Key="GroupTemplate">
-                <local:GroupControl />
+                <views:GroupControl />
             </DataTemplate>
 
             <DataTemplate x:Key="IdentifyTemplate">
-                <local:IdentifyControl />
+                <views:IdentifyControl />
             </DataTemplate>
 
             <DataTemplate x:Key="RegisterTemplate">

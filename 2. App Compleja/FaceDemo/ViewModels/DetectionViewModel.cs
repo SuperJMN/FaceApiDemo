@@ -4,7 +4,7 @@ using Windows.UI.Xaml.Media.Imaging;
 using Microsoft.ProjectOxford.Face.Contract;
 using ReactiveUI;
 
-namespace FaceDemo
+namespace FaceDemo.ViewModels
 {
     public class DetectionViewModel : ReactiveObject
     {

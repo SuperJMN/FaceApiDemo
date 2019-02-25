@@ -6,11 +6,13 @@ using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Windows.Storage;
 using FaceDemo.FaceApi;
+using FaceDemo.Gui;
+using FaceDemo.Misc;
 using Microsoft.ProjectOxford.Face;
 using Microsoft.ProjectOxford.Face.Contract;
 using ReactiveUI;
 
-namespace FaceDemo
+namespace FaceDemo.ViewModels
 {
     public class IdentifyViewModel : ReactiveObject
     {

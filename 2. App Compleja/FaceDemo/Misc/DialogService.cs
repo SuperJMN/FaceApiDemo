@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Windows.UI.Popups;
+using FaceDemo.ViewModels;
 using Microsoft.ProjectOxford.Face;
 
-namespace FaceDemo
+namespace FaceDemo.Misc
 {
     public class DialogService : IDialogService
     {

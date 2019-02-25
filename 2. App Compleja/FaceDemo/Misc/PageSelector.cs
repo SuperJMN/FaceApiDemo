@@ -1,7 +1,7 @@
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace FaceDemo
+namespace FaceDemo.Misc
 {
     public class PageSelector : DataTemplateSelector
     {

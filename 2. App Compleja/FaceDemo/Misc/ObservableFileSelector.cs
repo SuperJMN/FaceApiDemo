@@ -6,7 +6,7 @@ using Windows.Storage;
 using Windows.Storage.Pickers;
 using ReactiveUI;
 
-namespace FaceDemo
+namespace FaceDemo.Misc
 {
     public class ObservableFileSelector
     {

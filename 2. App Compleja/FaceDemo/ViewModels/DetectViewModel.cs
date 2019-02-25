@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.UI.Popups;
 using FaceDemo.FaceApi;
+using FaceDemo.Gui;
+using FaceDemo.Misc;
 using Microsoft.ProjectOxford.Face;
 using ReactiveUI;
 
-namespace FaceDemo
+namespace FaceDemo.ViewModels
 {
     public class DetectViewModel : ReactiveObject
     {

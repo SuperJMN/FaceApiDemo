@@ -1,7 +1,7 @@
 ﻿using System;
 using ReactiveUI;
 
-namespace FaceDemo
+namespace FaceDemo.ViewModels
 {
     public class SectionViewModel
     {

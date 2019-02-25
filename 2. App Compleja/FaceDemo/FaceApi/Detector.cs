@@ -3,6 +3,7 @@ using System.IO;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Windows.Storage;
+using FaceDemo.Gui;
 using Microsoft.ProjectOxford.Face;
 
 namespace FaceDemo.FaceApi
